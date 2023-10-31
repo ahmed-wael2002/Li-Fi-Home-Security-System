@@ -51,13 +51,13 @@ void DIO_Init(uint8 PortNumber, uint8 PinNumber, PinDirectionType direction){
             /* Adjusting the direction of the pin */
             if (direction == PIN_OUTPUT)
                 SET_BIT(GPIO_PORTB_DIR_R, PinNumber);
-            else
+            else{
                 CLEAR_BIT(GPIO_PORTB_DIR_R, PinNumber);
-
-            /* By assuming Pull-up resistor config is used 
-               -- NEEDS CHANGE @ Dynamic Configurations Structure */
-            /* Adjusting Pull-up resistor configurations */
-            SET_BIT(GPIO_PORTB_PUR_R, PinNumber);
+                /* By assuming Pull-up resistor config is used 
+                -- NEEDS CHANGE @ Dynamic Configurations Structure */
+                /* Adjusting Pull-up resistor configurations */
+                SET_BIT(GPIO_PORTB_PUR_R, PinNumber);
+            }
 
             /* Enabling the needed Pin */
             SET_BIT(GPIO_PORTB_DEN_R, PinNumber);
@@ -148,10 +148,14 @@ void DIO_Init(uint8 PortNumber, uint8 PinNumber, PinDirectionType direction){
             SET_BIT(GPIO_PORTF_DEN_R, PinNumber);
             break;
     }
-    
-
 }
 
+/*
+ * Description :
+ * Write the value Logic High or Logic Low on the required pin.
+ * If the input port number or pin number are not correct, The function will not handle the request.
+ * If the pin is input, this function will enable/disable the internal pull-up resistor.
+ */
 void DIO_writePin(uint8 PortNumber, uint8 PinNumber, ValueType value){
     if((PortNumber >= NUM_OF_PORTS) || (PinNumber >= NUM_OF_PINS)){
         /* Do Nothing !! */
@@ -205,6 +209,13 @@ void DIO_writePin(uint8 PortNumber, uint8 PinNumber, ValueType value){
     }
 }
 
+/*
+ * Description :
+ * Write the value on the required port.
+ * If any pin in the port is output pin the value will be written.
+ * If any pin in the port is input pin this will activate/deactivate the internal pull-up resistor.
+ * If the input port number is not correct, The function will not handle the request.
+ */
 void DIO_writePort(uint8 PortNumber, ValueType value){
     if(PortNumber >= NUM_OF_PORTS){
         /* Do Nothing !! */
@@ -254,5 +265,103 @@ void DIO_writePort(uint8 PortNumber, ValueType value){
                 break;
         }
     }
+}
 
+/*
+ * Description :
+ * Read and return the value for the required pin, it should be Logic High or Logic Low.
+ * If the input port number or pin number are not correct, The function will return Logic Low.
+ */
+uint8 DIO_readPin(uint8 PortNumber, uint8 PinNumber){
+    uint8 pin_value = LOGIC_LOW;
+
+    if ((PortNumber >= NUM_OF_PORTS) || (PinNumber >= NUM_OF_PINS)){
+        /* Do Nothing! */
+    }
+    else {
+        switch(PortNumber){
+            case PORTA_ID:
+                if (BIT_IS_SET(GPIO_PORTA_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+            case PORTB_ID:
+                if (BIT_IS_SET(GPIO_PORTB_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+            case PORTC_ID:
+                if (BIT_IS_SET(GPIO_PORTC_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+            case PORTD_ID:
+                if (BIT_IS_SET(GPIO_PORTD_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+            case PORTE_ID:
+                if (BIT_IS_SET(GPIO_PORTE_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+            case PORTF_ID:
+                if (BIT_IS_SET(GPIO_PORTF_DATA_R, PinNumber))
+                    pin_value = LOGIC_HIGH;
+                else
+                    pin_value = LOGIC_LOW;
+                break;
+                
+        }
+    }
+}
+
+/*
+ * Description :
+ * Read and return the value of the required port.
+ * If the input port number is not correct, The function will return ZERO value.
+ */
+uint8 DIO_readPort(uint8 PortNumber){
+    uint8 port_value = LOGIC_LOW;
+    if (PortNumber >= NUM_OF_PORTS){
+        /* Do Nothing ! */
+    }
+    else {
+        switch(PortNumber){
+            case PORTA_ID:
+                port_value = GPIO_PORTA_DATA_R;
+                break;
+
+            case PORTB_ID:
+                port_value = GPIO_PORTB_DATA_R;
+                break;
+
+            case PORTC_ID:
+                port_value = GPIO_PORTC_DATA_R;
+                break;
+
+            case PORTD_ID:
+                port_value = GPIO_PORTD_DATA_R;
+                break;
+
+            case PORTE_ID:
+                port_value = GPIO_PORTE_DATA_R;
+                break;
+
+            case PORTF_ID:
+                port_value = GPIO_PORTF_DATA_R;
+                break;
+        }
+        return port_value;
+    }
 }

@@ -6,7 +6,6 @@
 #ifndef DIO_H
 #define DIO_H
 
-#include "tm4c123gh6pm.h"
 #include "types.h"
 
 /**************************************************************
@@ -90,5 +89,11 @@ void DIO_writePin(uint8 PortNumber, uint8 PinNumber, ValueType value);
 
 /* Function to perform a batch write to all the pins in a specific port */
 void DIO_writePort(uint8 PortNumber, ValueType value);
+
+/* Function to return the value of a specific pin in a specific port */
+uint8 DIO_readPin(uint8 PortNumber, uint8 PinNumber);
+
+/* Function to return the value of a specific pin in a specific port */
+uint8 DIO_readPort(uint8 PortNumber);
 
 #endif
