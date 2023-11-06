@@ -87,6 +87,9 @@ void DIO_Init(uint8 PortNumber, uint8 PinNumber, PinDirectionType direction);
 /* Function to write a binary value in a specific pin in a specific port */
 void DIO_writePin(uint8 PortNumber, uint8 PinNumber, ValueType value);
 
+/* Function to toggle the current value in a specific pin in a specific port */
+void DIO_togglePin(uint8 PortNumber, uint8 PinNumber);
+
 /* Function to perform a batch write to all the pins in a specific port */
 void DIO_writePort(uint8 PortNumber, ValueType value);
 

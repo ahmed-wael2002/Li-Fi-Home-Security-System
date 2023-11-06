@@ -365,3 +365,38 @@ uint8 DIO_readPort(uint8 PortNumber){
         return port_value;
     }
 }
+
+/* Function to toggle the current value in a specific pin in a specific port */
+void DIO_togglePin(uint8 PortNumber, uint8 PinNumber){
+    if((PortNumber >= NUM_OF_PORTS) || (PinNumber >= NUM_OF_PINS)){
+        /* Do Nothing !! */
+        /* This section will be used for error reporting */
+    }
+    else {
+        switch (PortNumber){
+            case PORTA_ID:
+                TOGGLE_BIT(GPIO_PORTA_DATA_R, PinNumber);
+                break;
+
+            case PORTB_ID:
+                TOGGLE_BIT(GPIO_PORTB_DATA_R, PinNumber);
+                break;
+
+            case PORTC_ID:
+                TOGGLE_BIT(GPIO_PORTC_DATA_R, PinNumber);
+                break;
+
+            case PORTD_ID:
+                TOGGLE_BIT(GPIO_PORTD_DATA_R, PinNumber);
+                break;
+
+            case PORTE_ID:
+                TOGGLE_BIT(GPIO_PORTE_DATA_R, PinNumber);
+                break;
+
+            case PORTF_ID:
+                TOGGLE_BIT(GPIO_PORTF_DATA_R, PinNumber);
+                break;
+        }
+    }
+}
