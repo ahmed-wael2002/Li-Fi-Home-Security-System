@@ -321,8 +321,8 @@ uint8 DIO_readPin(uint8 PortNumber, uint8 PinNumber){
                 else
                     pin_value = LOGIC_LOW;
                 break;
-                
         }
+        return pin_value;
     }
 }
 
