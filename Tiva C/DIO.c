@@ -226,42 +226,54 @@ void DIO_writePort(uint8 PortNumber, ValueType value){
             case PORTA_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTA_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTA_DATA_R = 0x00;
+                else
+                    GPIO_PORTA_DATA_R = value;
                 break;
 
             case PORTB_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTB_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTB_DATA_R = 0x00;
+                else
+                    GPIO_PORTB_DATA_R = value;
                 break;
 
             case PORTC_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTC_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTC_DATA_R = 0x00;
+                else
+                    GPIO_PORTC_DATA_R = value;
                 break;
 
             case PORTD_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTD_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTD_DATA_R = 0x00;
+                else
+                    GPIO_PORTD_DATA_R = value;
                 break;
             case PORTE_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTE_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTE_DATA_R = 0x00;
+                else
+                    GPIO_PORTE_DATA_R = value;
                 break;
 
             case PORTF_ID:
                 if (value == LOGIC_HIGH)
                     GPIO_PORTF_DATA_R = 0xFF;
-                else
+                else if (value == LOGIC_LOW)
                     GPIO_PORTF_DATA_R = 0x00;
+                else
+                    GPIO_PORTF_DATA_R = value;
                 break;
         }
     }

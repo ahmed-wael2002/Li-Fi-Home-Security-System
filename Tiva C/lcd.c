@@ -6,7 +6,7 @@
  *
  * Description: Source file for the LCD driver
  *
- * Author: Mohamed Tarek
+ * Author: Ahmed Wael Ibrahim Mohamed
  *
  *******************************************************************************/
 
@@ -31,7 +31,6 @@ void LCD_init(void)
 	/* Configure the direction for RS and E pins as output pins */
 	DIO_Init(LCD_RS_PORT_ID,LCD_RS_PIN_ID,PIN_OUTPUT);
 	DIO_Init(LCD_E_PORT_ID,LCD_E_PIN_ID,PIN_OUTPUT);
-
 	_delay_ms(20);		/* LCD Power ON delay always > 15ms */
 
 #if(LCD_DATA_BITS_MODE == 4)
@@ -63,7 +62,6 @@ void LCD_init(void)
 	LCD_sendCommand(LCD_TWO_LINES_EIGHT_BITS_MODE);
 
 #endif
-
 	LCD_sendCommand(LCD_CURSOR_OFF); /* cursor off */
 	LCD_sendCommand(LCD_CLEAR_COMMAND); /* clear LCD at the beginning */
 }
@@ -160,13 +158,6 @@ void LCD_displayString(const char *Str)
 		LCD_displayCharacter(Str[i]);
 		i++;
 	}
-	/***************** Another Method ***********************
-	while((*Str) != '\0')
-	{
-		LCD_displayCharacter(*Str);
-		Str++;
-	}		
-	*********************************************************/
 }
 
 /*
