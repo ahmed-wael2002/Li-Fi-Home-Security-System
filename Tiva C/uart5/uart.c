@@ -13,6 +13,7 @@
 #include "uart.h"
 #include "tm4c123gh6pm.h"
 #include "bitwise_operation.h"
+#include "delay.h"
 
 /*******************************************************************************
  *                      Functions Definitions                                  *
@@ -26,73 +27,31 @@
  */
 void UART_init(const UART_ConfigType *config)
 {
-    /* Providing clock to UART Module 5 */
-    SET_BIT(SYSCTL_RCGCUART_R, 5);
-    /* Wait till UART Module 5 is ready */
-    while(BIT_IS_CLEAR(SYSCTL_PRUSB_R, 5));
+    SET_BIT(SYSCTL_RCGCUART_R,5);
+    SET_BIT(SYSCTL_RCGCGPIO_R ,4);
 
-    /* Enable PortE in Run Mode -- Port containing UART Module 5 */
-    SET_BIT(SYSCTL_RCGCGPIO_R, 4);
-    /* Wait till PortA is ready */
-    while(BIT_IS_CLEAR(SYSCTL_PRGPIO_R, 4));
+    _delay_ms(50);
 
-    /* Enabling UART
-        -- You need to disable UARTEN before any configurations
-        UARTCTL[0] is UARTEN 
-     */
-    CLEAR_BIT(UART5_CTL_R, 0);
-
-    /* Setting PA0(RX) PA1(TX) Pins to be used for alternated actions */
-    SET_BIT(GPIO_PORTE_AFSEL_R, 4);
-    SET_BIT(GPIO_PORTE_AFSEL_R, 5);
-    /* PUR, PDR Registers are not used */
-
-    /* Setting RX pin as input */
-    CLEAR_BIT(GPIO_PORTE_DIR_R, 4);
-    /* Setting TX pin as output */
-    SET_BIT(GPIO_PORTE_DIR_R, 5);
-
-    /* Setting RX pin as input */
-    CLEAR_BIT(GPIO_PORTE_DEN_R, 4);
-    /* Setting TX pin as output */
-    SET_BIT(GPIO_PORTE_DEN_R, 5);
-
-    /* Setting the port multiplexing control of portA to use UART */
-    GPIO_PORTA_PCTL_R |= (GPIO_PORTA_PCTL_R & 0xFF00FFFF) | 0x00110000;
-
-    /* Setting Baud Rate = 9600
-        -- BRD = Fck / (CLK_DIV * baud_rate);
-        -- CLK_DIV is 8 or 16 
-        16x10^6 / (16 * 9600) = 104.16667
-        Integer Baud Rate Data = 104
-    */
-    UART5_IBRD_R = (UART5_IBRD_R & 0xFFFF0000) | 0x68;
-    
-    /* Setting Baud Rate = 9600
-        Fraction Baud Rate Data = 0.1667*65 = 10.67 == 11 = 0xB
-    */
-    UART5_FBRD_R = (UART5_FBRD_R & 0xFFFFFFC0) | 0x0B;
-
-    /* Setting the word length of the data to be transmitted
-        -- BITS(5-6): Word Length (0x3 = 8 bits)
-        -- BITS(4): FIFO Enable (1 to enable)
-     */
-    UART5_LCRH_R = (UART5_LCRH_R & 0xFFFFFF00)
-                    | ((config->s_mode)<<5)
+     /* UART0 initialization */
+    UART5_CTL_R = 0;         /* UART5 module disbable */
+    UART5_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+    UART5_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+    UART5_CC_R = 0;          /*select system clock*/
+    //UART5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+    UART5_LCRH_R =    ((config->s_mode)<<5)
                     | ((config->s_stop)<<3)
-                    | ((config->s_parity)<<2)
-                    | UART_LCRH_FEN;
-
-    /* Enabling Parity */
-    if ((config->s_parity) == DISABLED)
-        CLEAR_BIT(UART5_LCRH_R, 1);
-    else
-        SET_BIT(UART5_LCRH_R, 1);
-
+                    | ((config->s_parity)<<2);
+    //UART5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
     /* Enable UART Receive/Transmit and UART module enable */
-    SET_BIT(UART5_CTL_R, UART_TRANSMIT_EN);  /* Enable UART5 Transmit */
-    SET_BIT(UART5_CTL_R, UART_RECEIVE_EN);   /* Enable UART5 Receive */
-    SET_BIT(UART5_CTL_R, UART_MODULE_EN);    /* Enable UART5 Module */
+    SET_BIT(UART5_CTL_R, UART_TRANSMIT_EN);  /* Enable UART0 Transmit */
+    SET_BIT(UART5_CTL_R, UART_RECEIVE_EN);   /* Enable UART0 Receive */
+    SET_BIT(UART5_CTL_R, UART_MODULE_EN);    /* Enable UART0 Module */
+
+     /* UART5 TX5 and RX5 use PE4 and PE5. Configure them digital and enable alternate function */
+    GPIO_PORTE_DEN_R = 0x30;      /* set PE4 and PE5 as digital */
+    GPIO_PORTE_AFSEL_R = 0x30;    /* Use PE4,PE5 alternate function */
+    GPIO_PORTE_AMSEL_R = 0;    /* Turn off analg function*/
+    GPIO_PORTE_PCTL_R = 0x00110000;     /* configure PE4 and PE5 for UART */
 }
 
 /*
@@ -104,13 +63,18 @@ void UART_sendByte(const uint8 data)
 	/* UART5 TX FIFO FULL FLAG is set indicating that the FIFO is full
         so wait till the FIFO is empty then fill it with new data
 	 */
-	while(BIT_IS_SET(UART5_FR_R,FIFO_TRANSMIT_FULL)){}
+//	while(BIT_IS_SET(UART5_FR_R,TX_BUFFER_FULL)){}
 
 	/*
 	 * Put the required data in the UDR register and it also clear the UDRE flag as
 	 * the UDR register is not empty now
 	 */
-	UART5_DR_R = data;
+//	UART5_DR_R = data;
+
+/*-----------------------NEW CODE-------------------------------------*/
+
+ while((UART5_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+    UART5_DR_R = data;                  /* before giving it another byte */
 }
 
 /*
@@ -122,13 +86,19 @@ uint8 UART_recieveByte(void)
 	/* UART5 RX FIFO FULL FLAG is set indicating that the FIFO is full
         so wait till the FIFO is empty then read the newly filled data
 	 */
-    while(BIT_IS_SET(UART5_FR_R,FIFO_RECEIVE_FULL)){}
+  //  while(BIT_IS_SET(UART5_FR_R,RX_BUFFER_FULL)){}
 
 	/*
 	 * Read the received data from the Rx buffer (UDR)
 	 * The RXC flag will be cleared after read the data
 	 */
-    return UART5_DR_R;		
+   // return UART5_DR_R;	
+
+   /*--------------------NEW CODE---------------------------*/
+    char data;
+    while((UART5_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+    data = UART5_DR_R ;  	/* before giving it another byte */
+    return (uint8) data; 
 }
 
 /*

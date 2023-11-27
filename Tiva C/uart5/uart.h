@@ -18,8 +18,8 @@
 #define UART_MODULE_EN      0
 #define UART_TRANSMIT_EN    8
 #define UART_RECEIVE_EN     9
-#define FIFO_TRANSMIT_FULL  5
-#define FIFO_RECEIVE_FULL   6  
+#define TX_BUFFER_FULL  	5
+#define RX_BUFFER_FULL   	4  
 
 /*******************************************************************************
  *                      Types Definition                                    *
