@@ -13,6 +13,7 @@
 #include "uart.h"
 #include "tm4c123gh6pm.h"
 #include "bitwise_operation.h"
+#include "delay.h"
 
 /*******************************************************************************
  *                      Functions Definitions                                  *
@@ -28,23 +29,18 @@ void UART_init(const UART_ConfigType *config)
 {
     /* Providing clock to UART Module 0 */
     SET_BIT(SYSCTL_RCGCUART_R, 0);
-    /* Wait till UART Module 0 is ready */
-    while(BIT_IS_CLEAR(SYSCTL_PRUSB_R, 0));
-
     /* Enable PortA in Run Mode -- Port containing UART Module 0 */
     SET_BIT(SYSCTL_RCGCGPIO_R, 0);
-    /* Wait till PortA is ready */
-    while(BIT_IS_CLEAR(SYSCTL_PRGPIO_R, 0));
+    _delay_ms(50);
 
-    /* Enabling UART
-        -- You need to disable UARTEN before any configurations
-        UARTCTL[0] is UARTEN 
-     */
-    CLEAR_BIT(UART0_CTL_R, 0);
-
+    
+    /*********** GPIO Pin Confiugration ************/
     /* Setting PA0(RX) PA1(TX) Pins to be used for alternated actions */
     SET_BIT(GPIO_PORTA_AFSEL_R, 0);
     SET_BIT(GPIO_PORTA_AFSEL_R, 1);
+    
+    SET_BIT(GPIO_PORTA_DEN_R, 0);
+    SET_BIT(GPIO_PORTA_DEN_R, 1);
     /* PUR, PDR Registers are not used */
 
     /* Setting RX pin as input */
@@ -53,7 +49,16 @@ void UART_init(const UART_ConfigType *config)
     SET_BIT(GPIO_PORTA_DIR_R, 1);
 
     /* Setting the port multiplexing control of portA to use UART */
-    GPIO_PORTA_PCTL_R |= (GPIO_PORTA_PCTL_R & 0xFFFFFF00) | 0x00000011;
+    GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R & 0xFFFFFF00) | 0x00000011;
+
+    
+    /*********** UART Confiugration ************/
+    
+    /* Enabling UART
+        -- You need to disable UARTEN before any configurations
+        UARTCTL[0] is UARTEN 
+     */
+    CLEAR_BIT(UART0_CTL_R, 0);
 
     /* Setting Baud Rate = 9600
         -- BRD = Fck / (CLK_DIV * baud_rate);
@@ -67,6 +72,7 @@ void UART_init(const UART_ConfigType *config)
         Fraction Baud Rate Data = 0.1667*65 = 10.67 == 11 = 0xB
     */
     UART0_FBRD_R = (UART0_FBRD_R & 0xFFFFFFC0) | 0x0B;
+    UART0_CC_R = 0;     // Select System Clock
 
     /* Setting the word length of the data to be transmitted
         -- BITS(5-6): Word Length (0x3 = 8 bits)
