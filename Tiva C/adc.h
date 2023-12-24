@@ -20,19 +20,10 @@
 #define PIN6_ID     6
 #define PIN7_ID     7 
 
-#define ADC_MAXIMUM_VALUE    1023
-#define ADC_REF_VOLT_VALUE   2.56
-
 
 /*********************************
  *       TYPES DECLARATION
  *********************************/
-typedef enum{
-	AREF,
-	AVCC,
-	INTERNAL=3
-}ADC_VoltageType;
-
 typedef enum{
     ADC0,
     ADC1
