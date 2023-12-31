@@ -27,123 +27,346 @@
  */
 void UART_init(const UART_ConfigType *config)
 {
-    /* Providing clock to UART Module 0 */
-    SET_BIT(SYSCTL_RCGCUART_R, 0);
-    /* Enable PortA in Run Mode -- Port containing UART Module 0 */
-    SET_BIT(SYSCTL_RCGCGPIO_R, 0);
+    // Mapping of RX Pins
+    int pinNumber, portNumber, pctl_val;
+    switch(config->s_module){
+        case UART_0:
+            portNumber = PORTA_ID;
+            pinNumber = 0;
+            pctl_val = 0x00000011;  // Mux Control Value for Pin0,1
+            break;
+        case UART_1:
+            portNumber = PORTC_ID;
+            pinNumber = 4;
+            pctl_val = 0x00110000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_2:
+            portNumber = PORTD_ID;
+            pinNumber = 6;
+            pctl_val = 0x11000000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_3:
+            portNumber = PORTC_ID;
+            pinNumber = 6;
+            pctl_val = 0x11000000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_4:
+            portNumber = PORTC_ID;
+            pinNumber = 4;
+            pctl_val = 0x00110000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_5:
+            portNumber = PORTE_ID;
+            pinNumber = 4;
+            pctl_val = 0x00110000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_6:
+            portNumber = PORTD_ID;
+            pinNumber = 4;
+            pctl_val = 0x00110000;  // Mux Control Value for Pin0,1
+            break;
+        case UART_7:
+            portNumber = PORTE_ID;
+            pinNumber = 0;
+            pctl_val = 0x00000011;  // Mux Control Value for Pin0,1
+            break;
+    }
+
+    SET_BIT(SYSCTL_RCGCUART_R,config->s_module);
+    SET_BIT(SYSCTL_RCGCGPIO_R ,portNumber);
     _delay_ms(50);
 
-    
-    /*********** GPIO Pin Confiugration ************/
-    /* Setting PA0(RX) PA1(TX) Pins to be used for alternated actions */
-    SET_BIT(GPIO_PORTA_AFSEL_R, 0);
-    SET_BIT(GPIO_PORTA_AFSEL_R, 1);
-    
-    SET_BIT(GPIO_PORTA_DEN_R, 0);
-    SET_BIT(GPIO_PORTA_DEN_R, 1);
-    /* PUR, PDR Registers are not used */
+    // Configuring Pins
+    /* UART5 TX5 and RX5 use PE4 and PE5. Configure them digital and enable alternate function */
+    switch(portNumber){
+        case PORTA_ID:
+            // Enabling digital pins for RX & TX
+            SET_BIT(GPIO_PORTA_DEN_R, pinNumber);
+            SET_BIT(GPIO_PORTA_DEN_R, pinNumber+1);
 
-    /* Setting RX pin as input */
-    CLEAR_BIT(GPIO_PORTA_DIR_R, 0);
-    /* Setting TX pin as output */
-    SET_BIT(GPIO_PORTA_DIR_R, 1);
+            // Enabling alternate functions for RX & TX
+            SET_BIT(GPIO_PORTA_AFSEL_R, pinNumber);
+            SET_BIT(GPIO_PORTA_AFSEL_R, pinNumber+1);
 
-    /* Setting the port multiplexing control of portA to use UART */
-    GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R & 0xFFFFFF00) | 0x00000011;
+            // Enabling alternate functions for RX & TX
+            CLEAR_BIT(GPIO_PORTA_AMSEL_R, pinNumber);
+            CLEAR_BIT(GPIO_PORTA_AMSEL_R, pinNumber+1);
 
-    
-    /*********** UART Confiugration ************/
-    
-    /* Enabling UART
-        -- You need to disable UARTEN before any configurations
-        UARTCTL[0] is UARTEN 
-     */
-    CLEAR_BIT(UART0_CTL_R, 0);
+            // Configuring Mux Control for pin0,1
+            GPIO_PORTA_PCTL_R |= pctl_val;
+            break;
+        case PORTC_ID:
+            // Enabling digital pins for RX & TX
+            SET_BIT(GPIO_PORTC_DEN_R, pinNumber);
+            SET_BIT(GPIO_PORTC_DEN_R, pinNumber+1);
+            // Enabling alterCate functions for RX & TX
+            SET_BIT(GPIO_PORTC_AFSEL_R, pinNumber);
+            SET_BIT(GPIO_PORTC_AFSEL_R, pinNumber+1);
 
-    /* Setting Baud Rate = 9600
-        -- BRD = Fck / (CLK_DIV * baud_rate);
-        -- CLK_DIV is 8 or 16 
-        16x10^6 / (16 * 9600) = 104.16667
-        Integer Baud Rate Data = 104
-    */
-    UART0_IBRD_R = (UART0_IBRD_R & 0xFFFF0000) | 0x68;
-    
-    /* Setting Baud Rate = 9600
-        Fraction Baud Rate Data = 0.1667*65 = 10.67 == 11 = 0xB
-    */
-    UART0_FBRD_R = (UART0_FBRD_R & 0xFFFFFFC0) | 0x0B;
-    UART0_CC_R = 0;     // Select System Clock
+            // Enabling alternate functions for RX & TX
+            CLEAR_BIT(GPIO_PORTC_AMSEL_R, pinNumber);
+            CLEAR_BIT(GPIO_PORTC_AMSEL_R, pinNumber+1);
 
-    /* Setting the word length of the data to be transmitted
-        -- BITS(5-6): Word Length (0x3 = 8 bits)
-        -- BITS(4): FIFO Enable (1 to enable)
-     */
-    UART0_LCRH_R = (UART0_LCRH_R & 0xFFFFFF00)
-                    | ((config->s_mode)<<5)
-                    | ((config->s_stop)<<3)
-                    | ((config->s_parity)<<2)
-                    | UART_LCRH_FEN;
+            // Configuring Mux Control for pin0,1
+            GPIO_PORTC_PCTL_R |= pctl_val;
+            break;
+        case PORTD_ID:
+            // Enabling digital pins for RX & TX
+            SET_BIT(GPIO_PORTD_DEN_R, pinNumber);
+            SET_BIT(GPIO_PORTD_DEN_R, pinNumber+1);
+            // Enabling alterDate functions for RX & TX
+            SET_BIT(GPIO_PORTD_AFSEL_R, pinNumber);
+            SET_BIT(GPIO_PORTD_AFSEL_R, pinNumber+1);
 
-    /* Enabling Parity */
-    if ((config->s_parity) == DISABLED)
-        CLEAR_BIT(UART0_LCRH_R, 1);
-    else
-        SET_BIT(UART0_LCRH_R, 1);
+            // Enabling alternate functions for RX & TX
+            CLEAR_BIT(GPIO_PORTD_AMSEL_R, pinNumber);
+            CLEAR_BIT(GPIO_PORTD_AMSEL_R, pinNumber+1);
 
-    /* Enable UART Receive/Transmit and UART module enable */
-    SET_BIT(UART0_CTL_R, UART_TRANSMIT_EN);  /* Enable UART0 Transmit */
-    SET_BIT(UART0_CTL_R, UART_RECEIVE_EN);   /* Enable UART0 Receive */
-    SET_BIT(UART0_CTL_R, UART_MODULE_EN);    /* Enable UART0 Module */
+            // Configuring Mux Control for pin0,1
+            GPIO_PORTD_PCTL_R |= pctl_val;
+            break;
+        case PORTE_ID:
+            // Enabling digital pins for RX & TX
+            SET_BIT(GPIO_PORTE_DEN_R, pinNumber);
+            SET_BIT(GPIO_PORTE_DEN_R, pinNumber+1);
+            // Enabling alterEate functions for RX & TX
+            SET_BIT(GPIO_PORTE_AFSEL_R, pinNumber);
+            SET_BIT(GPIO_PORTE_AFSEL_R, pinNumber+1);
+
+            // Enabling alternate functions for RX & TX
+            CLEAR_BIT(GPIO_PORTE_AMSEL_R, pinNumber);
+            CLEAR_BIT(GPIO_PORTE_AMSEL_R, pinNumber+1);
+
+            // Configuring Mux Control for pin0,1
+            GPIO_PORTE_PCTL_R |= pctl_val;
+            break;
+    }
+
+    switch(config->s_module){
+        case UART_0:  
+            /* UART0 initialization */
+            UART0_CTL_R = 0;         /* UART5 module disbable */
+            UART0_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART0_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART0_CC_R = 0;          /*select system clock*/
+            //UA0T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART0_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UART5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* Enable UART Receive/Transmit and UART module enable */
+            UART0_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_1:  
+            /* UART0 initialization */
+            UART1_CTL_R = 0;         /* UART5 module disbable */
+            UART1_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART1_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART1_CC_R = 0;          /*select system clock*/
+            //UA0T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART1_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UART5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* Enable UART Receive/Transmit and UART module enable */
+            UART1_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_2:  
+            /* UART0 initialization */
+            UART2_CTL_R = 0;         /* UART5 module disbable */
+            UART2_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART2_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART2_CC_R = 0;          /*select system clock*/
+            //UA2T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART2_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UART5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* Enable UART Receive/Transmit and UART module enable */
+            UART2_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_3:  
+            /* UART0 initialization */
+            UART3_CTL_R = 0;         /* UART5 module disbable */
+            UART3_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART3_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART3_CC_R = 0;          /*select system clock*/
+            //UA3T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART3_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UA3T5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* E3able UART Receive/Transmit and UART module enable */
+            UART3_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_4:  
+            /* UART0 initialization */
+            UART4_CTL_R = 0;         /* UART5 module disbable */
+            UART4_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART4_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART4_CC_R = 0;          /*select system clock*/
+            //UA4T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART4_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UA4T5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* E4able UART Receive/Transmit and UART module enable */
+            UART4_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_5:  
+            /* UART0 initialization */
+            UART5_CTL_R = 0;         /* UART5 module disbable */
+            UART5_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART5_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART5_CC_R = 0;          /*select system clock*/
+            //UA5T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART5_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UA5T5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* E5able UART Receive/Transmit and UART module enable */
+            UART5_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_6:  
+            /* UART0 initialization */
+            UART6_CTL_R = 0;         /* UART5 module disbable */
+            UART6_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART6_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART6_CC_R = 0;          /*select system clock*/
+            //UA6T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART6_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UA6T5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* E6able UART Receive/Transmit and UART module enable */
+            UART6_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+
+        case UART_7:  
+            /* UART0 initialization */
+            UART7_CTL_R = 0;         /* UART5 module disbable */
+            UART7_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
+            UART7_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART7_CC_R = 0;          /*select system clock*/
+            //UA7T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
+            UART7_LCRH_R =    ((config->s_mode)<<5)
+                            | ((config->s_stop)<<3)
+                            | ((config->s_parity)<<2);
+            //UA7T5_CTL_R = 0x301;     /* Enable UART5 module, Rx and Tx */
+            /* E7able UART Receive/Transmit and UART module enable */
+            UART7_CTL_R |= (UART_CTL_UARTEN) | (UART_CTL_RXE) | (UART_CTL_TXE);
+            break;
+    }
+   
 }
 
 /*
  * Description :
  * Functional responsible for send byte to another UART device.
  */
-void UART_sendByte(const uint8 data)
+void UART_sendByte(const UART_ModuleNumber module,const uint8 data)
 {
-	/* UART0 TX FIFO FULL FLAG is set indicating that the FIFO is full
-        so wait till the FIFO is empty then fill it with new data
-	 */
-	while(BIT_IS_SET(UART0_FR_R,FIFO_TRANSMIT_FULL)){}
+    switch(module){
+        case UART_0:
+            while((UART0_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART0_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_1:
+            while((UART1_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART1_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_2:
+            while((UART2_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART2_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_3:
+            while((UART3_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART3_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_4:
+            while((UART4_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART4_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_5:
+            while((UART5_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART5_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_6:
+            while((UART6_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART6_DR_R = data;                  /* before giving it another byte */
+            break;
+        case UART_7:
+            while((UART7_FR_R & 0x20) != 0); /* wait until Tx buffer not full */
+            UART7_DR_R = data;                  /* before giving it another byte */
+            break;
+    }
 
-	/*
-	 * Put the required data in the UDR register and it also clear the UDRE flag as
-	 * the UDR register is not empty now
-	 */
-	UART0_DR_R = data;
 }
 
 /*
  * Description :
  * Functional responsible for receive byte from another UART device.
  */
-uint8 UART_recieveByte(void)
+uint8 UART_recieveByte(UART_ModuleNumber module)
 {
-	/* UART0 RX FIFO FULL FLAG is set indicating that the FIFO is full
-        so wait till the FIFO is empty then read the newly filled data
-	 */
-    while(BIT_IS_SET(UART0_FR_R,FIFO_RECEIVE_FULL)){}
+    char data;
 
-	/*
-	 * Read the received data from the Rx buffer (UDR)
-	 * The RXC flag will be cleared after read the data
-	 */
-    return UART0_DR_R;		
+    switch(module){
+        case UART_0:
+            while((UART0_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART0_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_1:
+            while((UART1_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART1_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_2:
+            while((UART2_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART2_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_3:
+            while((UART3_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART3_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_4:
+            while((UART4_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART4_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_5:
+            while((UART5_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART5_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_6:
+            while((UART6_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART6_DR_R ;  	/* before giving it another byte */
+            break;
+        case UART_7:
+            while((UART7_FR_R & (1<<4)) != 0); /* wait until Rx buffer is not full */
+            data = UART7_DR_R ;  	/* before giving it another byte */
+            break;
+    }
+
+    return (uint8) data; 
 }
 
 /*
  * Description :
  * Send the required string through UART to the other UART device.
  */
-void UART_sendString(const uint8 *Str)
+void UART_sendString(UART_ModuleNumber module, const uint8 *Str)
 {
 	uint8 i = 0;
 
 	/* Send the whole string */
 	while(Str[i] != '\0')
 	{
-		UART_sendByte(Str[i]);
+		UART_sendByte(module, Str[i]);
 		i++;
 	}
 }
@@ -152,18 +375,18 @@ void UART_sendString(const uint8 *Str)
  * Description :
  * Receive the required string until the '#' symbol through UART from the other UART device.
  */
-void UART_receiveString(uint8 *Str)
+void UART_receiveString(UART_ModuleNumber module, uint8 *Str)
 {
 	uint8 i = 0;
 
 	/* Receive the first byte */
-	Str[i] = UART_recieveByte();
+	Str[i] = UART_recieveByte(module);
 
 	/* Receive the whole string until the '#' */
 	while(Str[i] != '#')
 	{
 		i++;
-		Str[i] = UART_recieveByte();
+		Str[i] = UART_recieveByte(module);
 	}
 
 	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
