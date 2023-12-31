@@ -11,34 +11,55 @@
  *******************************************************************************/
 
 #include "delay.h"
-#include "tm4c123gh6pm.h"
+
+/*
+    Given the Processor Frequency:
+    1 second delay takes up a number of instructions equals the PROCESSOR_FREQUENCY
+    we can create a system delay by wasting that amount of clock cycles
+    However, the for-loop takes up 5 unit instructions as follows:
+     1- COMPARE 
+     2- BRANCH 
+     3- LOAD
+     4- STORE
+     5- ADD
+    so to waste the right amount of clock cycles we need to divide the calculated number by the number
+        of unit instructions in for-loop
+*/
+void SysTick_Init(void) {
+    // Disable SysTick during setup
+    NVIC_ST_CTRL_R = 0;                  
+    
+    // Set the reload value for a 1ms interrupt
+    NVIC_ST_RELOAD_R = PROCESSOR_FREQUENCY / 1000 - 1;
+    
+    // Set the clock source to system clock and enable the SysTick timer
+    NVIC_ST_CTRL_R |= (NVIC_ST_CTRL_CLK_SRC | NVIC_ST_CTRL_ENABLE);
+
+}
+
+void SysTick_Delay(uint32 delay_ms) {
+    // Load the delay value into the reload register
+    NVIC_ST_RELOAD_R = (PROCESSOR_FREQUENCY / 1000 * delay_ms) - 1;
+    
+    // Start the SysTick timer and wait until the COUNT flag is set
+    NVIC_ST_CTRL_R |= NVIC_ST_CTRL_ENABLE;
+    while ((NVIC_ST_CTRL_R & NVIC_ST_CTRL_COUNT) == 0) {}
+    
+    // Disable the SysTick timer
+    NVIC_ST_CTRL_R &= ~NVIC_ST_CTRL_ENABLE;
+}
+
+void SysTick_Delay_Seconds(uint32 seconds) {
+    // Convert seconds to milliseconds and call the SysTick_Delay function
+    SysTick_Delay(seconds * 1000);
+}
 
 void _delay_sec(uint32 seconds){
-    /* Configuring 24-bit Systick Timer */
-    // Polling method is used
-    NVIC_ST_CTRL_R |= (NVIC_ST_CTRL_CLK_SRC)     // Use system timer
-                    | (NVIC_ST_CTRL_ENABLE);     // Enable Systick Timer
-    seconds = (seconds * PROCESSOR_FREQUENCY) - 1;
-
-    // Inserting Reload value into Systick Reload Register
-    // Reload value should be 24-bits
-    NVIC_ST_RELOAD_R = (NVIC_ST_RELOAD_R & ~0x00FFFFFF) | (seconds & 0x00FFFFFF);
-    
-    // Wait till timeout
-    while((NVIC_ST_CTRL_R & NVIC_ST_CTRL_COUNT) == 0);
+    seconds *= PROCESSOR_FREQUENCY;
+    for(uint32 i=0; i<(seconds/5); i++);
 }
 
 void _delay_ms(uint32 milliseconds){
-    /* Configuring 24-bit Systick Timer */
-    // Polling method is used
-    NVIC_ST_CTRL_R |= (NVIC_ST_CTRL_CLK_SRC)     // Use system timer
-                    | (NVIC_ST_CTRL_ENABLE);     // Enable Systick Timer
-    milliseconds = (milliseconds * PROCESSOR_FREQUENCY)/1000 - 1;
-
-    // Inserting Reload value into Systick Reload Register
-    // Reload value should be 24-bits
-    NVIC_ST_RELOAD_R = (NVIC_ST_RELOAD_R & ~0x00FFFFFF) | (milliseconds & 0x00FFFFFF);
-
-    // Wait till timeout
-    while((NVIC_ST_CTRL_R & NVIC_ST_CTRL_COUNT) == 0);
+    milliseconds *= (PROCESSOR_FREQUENCY/1000);
+    for(uint32 i=0; i<(milliseconds/5); i++);
 }

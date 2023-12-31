@@ -1,19 +1,6 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-/* Boolean Data Type */
-typedef unsigned char boolean;
-
-/* Boolean Values */
-#ifndef FALSE
-#define FALSE       (0u)
-#endif
-#ifndef TRUE
-#define TRUE        (1u)
-#endif
-
-#define NULL   ((void*)0)
-
 typedef unsigned char           uint8;
 typedef unsigned short          uint16;
 typedef unsigned long           uint32;

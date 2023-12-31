@@ -1,6 +1,6 @@
 #include "DIO.h"
 #include "smoke.h"
-/*=================== Function Definitions ===================*/
+
 void Smoke_INIT(void){
     DIO_Init(SMOKE_PORTID,SMOKE_PIN_ID,PIN_INPUT);
 }

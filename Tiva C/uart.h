@@ -21,23 +21,6 @@
 #define TX_BUFFER_FULL  	5
 #define RX_BUFFER_FULL   	4  
 
-
-#define PORTA_ID    0
-#define PORTB_ID    1
-#define PORTC_ID    2
-#define PORTD_ID    3
-#define PORTE_ID    4
-#define PORTF_ID    5
-
-#define PIN0_ID     0
-#define PIN1_ID     1
-#define PIN2_ID     2
-#define PIN3_ID     3
-#define PIN4_ID     4
-#define PIN5_ID     5
-#define PIN6_ID     6
-#define PIN7_ID     7 
-
 /*******************************************************************************
  *                      Types Definition                                    *
  *******************************************************************************/
@@ -63,20 +46,7 @@ typedef enum{
 	BIT_8,
 }UART_ModeType;
 
-typedef enum{
-	UART_0,
-	UART_1,
-	UART_2,
-	UART_3, 
-	UART_4,
-	UART_5,
-	UART_6, 
-	UART_7
-}UART_ModuleNumber;
-
-
 typedef struct{
-	UART_ModuleNumber s_module;
 	uint32 s_baud_rate;
 	UART_ParityType s_parity;
 	UART_StopBitType s_stop;
@@ -100,24 +70,24 @@ void UART_init(const UART_ConfigType *config);
  * Description :
  * Functional responsible for send byte to another UART device.
  */
-void UART_sendByte(const UART_ModuleNumber module,const uint8 data);
+void UART_sendByte(const uint8 data);
 
 /*
  * Description :
  * Functional responsible for receive byte from another UART device.
  */
-uint8 UART_recieveByte(UART_ModuleNumber module);
+uint8 UART_recieveByte(void);
 
 /*
  * Description :
  * Send the required string through UART to the other UART device.
  */
-void UART_sendString(UART_ModuleNumber module, const uint8 *Str);
+void UART_sendString(const uint8 *Str);
 
 /*
  * Description :
  * Receive the required string until the '#' symbol through UART from the other UART device.
  */
-void UART_receiveString(UART_ModuleNumber module, uint8 *Str);
+void UART_receiveString(uint8 *Str); // Receive until #
 
 #endif /* UART_H_ */
