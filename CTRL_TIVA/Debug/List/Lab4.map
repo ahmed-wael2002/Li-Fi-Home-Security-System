@@ -1,0 +1,216 @@
+###############################################################################
+#
+# IAR ELF Linker V9.30.1.335/W64 for ARM                  31/Dec/2023  11:36:25
+# Copyright 2007-2022 IAR Systems AB.
+#
+#    Output file  =
+#        D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\Exe\Lab4.out
+#    Map file     =
+#        D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\List\Lab4.map
+#    Command line =
+#        -f "D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\Exe\Lab4.out.rsp" ("D:\College\Semester 7\3 Intro to
+#        Embedded Systems\1 Labs\UART0\Debug\Obj\delay.o" "D:\College\Semester
+#        7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\Obj\DIO.o"
+#        "D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\Obj\keypad.o" "D:\College\Semester 7\3 Intro to
+#        Embedded Systems\1 Labs\UART0\Debug\Obj\lcd.o" "D:\College\Semester
+#        7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\Obj\led.o"
+#        "D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\Obj\main.o" "D:\College\Semester 7\3 Intro to
+#        Embedded Systems\1 Labs\UART0\Debug\Obj\uart.o" --no_out_extension -o
+#        "D:\College\Semester 7\3 Intro to Embedded Systems\1
+#        Labs\UART0\Debug\Exe\Lab4.out" --redirect _Printf=_PrintfFullNoMb
+#        --redirect _Scanf=_ScanfFullNoMb --map "D:\College\Semester 7\3 Intro
+#        to Embedded Systems\1 Labs\UART0\Debug\List\Lab4.map" --config
+#        "C:\Program Files\IAR Systems\Embedded Workbench
+#        9.1\arm/config/linker/TexasInstruments/TM4C123GH6.icf" --semihosting
+#        --entry __iar_program_start --vfe --text_out locale --cpu=Cortex-M4
+#        --fpu=VFPv4_sp)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because --advanced_heap
+was not specified and the application did not appear to
+be primarily optimized for speed.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x3'ffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'7fff] {
+          rw, block CSTACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind         Address    Size  Object
+  -------   ----         -------    ----  ------
+"A0":                               0x40
+  .intvec   ro code          0x0    0x40  vector_table_M.o [4]
+                          - 0x40    0x40
+
+"P1":                              0xd6c
+  .text     ro code         0x40   0x6b6  uart.o [1]
+  .text     ro code        0x6f6     0x2  vectortrap_M.o [4]
+  .text     ro code        0x6f8    0x18  delay.o [1]
+  .text     ro code        0x710   0x400  DIO.o [1]
+  .text     ro code        0xb10    0xd2  led.o [1]
+  .text     ro code        0xbe4    0xbc  main.o [1]
+  .text     ro code        0xca0    0x22  fpinit_M.o [3]
+  .text     ro code        0xcc4    0x1e  cmain.o [4]
+  .text     ro code        0xce2     0x4  low_level_init.o [2]
+  .text     ro code        0xce6     0x4  exit.o [2]
+  .text     ro code        0xcec     0xa  cexit.o [4]
+  .text     ro code        0xcf8    0x14  exit.o [5]
+  .text     ro code        0xd0c    0x1c  cstartup_M.o [4]
+  .rodata   const          0xd28    0x14  main.o [1]
+  .rodata   const          0xd3c    0x14  main.o [1]
+  .rodata   const          0xd50    0x14  main.o [1]
+  .rodata   const          0xd64    0x14  main.o [1]
+  .rodata   const          0xd78    0x14  main.o [1]
+  .rodata   const          0xd8c    0x14  main.o [1]
+  .rodata   const          0xda0     0xc  main.o [1]
+                         - 0xdac   0xd6c
+
+"P2":                             0x1000
+  CSTACK             0x2000'0000  0x1000  <Block>
+    CSTACK  uninit   0x2000'0000  0x1000  <Block tail>
+                   - 0x2000'1000  0x1000
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0xdac     0x3'ffff  0x3'f254
+  0x2000'1000  0x2000'7fff    0x7000
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\Obj: [1]
+    DIO.o               1'024
+    delay.o                24
+    led.o                 210
+    main.o                188      132
+    uart.o              1'718
+    -------------------------------------------
+    Total:              3'164      132
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+m7M_tls.a: [3]
+    fpinit_M.o             34
+    -------------------------------------------
+    Total:                 34
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           28
+    vector_table_M.o       64
+    vectortrap_M.o          2
+    -------------------------------------------
+    Total:                134
+
+shb_l.a: [5]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    8
+    Linker created                        4'096
+-----------------------------------------------
+    Grand Total:        3'368      132    4'096
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                     Address   Size  Type      Object
+-----                     -------   ----  ----      ------
+?main                       0xcc5         Code  Gb  cmain.o [4]
+BusFault_Handler            0x6f7         Code  Wk  vectortrap_M.o [4]
+CSTACK$$Base          0x2000'0000          --   Gb  - Linker created -
+CSTACK$$Limit         0x2000'1000          --   Gb  - Linker created -
+DIO_Init                    0x711  0x23c  Code  Gb  DIO.o [1]
+DIO_writePin                0x94d  0x134  Code  Gb  DIO.o [1]
+DebugMon_Handler            0x6f7         Code  Wk  vectortrap_M.o [4]
+HardFault_Handler           0x6f7         Code  Wk  vectortrap_M.o [4]
+LED_init                    0xb11   0x22  Code  Gb  led.o [1]
+LED_turnOff                 0xb8b   0x58  Code  Gb  led.o [1]
+LED_turnOn                  0xb33   0x58  Code  Gb  led.o [1]
+MemManage_Handler           0x6f7         Code  Wk  vectortrap_M.o [4]
+NMI_Handler                 0x6f7         Code  Wk  vectortrap_M.o [4]
+PendSV_Handler              0x6f7         Code  Wk  vectortrap_M.o [4]
+Region$$Table$$Base           0x0          --   Gb  - Linker created -
+Region$$Table$$Limit          0x0          --   Gb  - Linker created -
+SVC_Handler                 0x6f7         Code  Wk  vectortrap_M.o [4]
+SysTick_Handler             0x6f7         Code  Wk  vectortrap_M.o [4]
+UART_init                    0x41  0x438  Code  Gb  uart.o [1]
+UART_recieveByte            0x517   0x92  Code  Gb  uart.o [1]
+UART_sendByte               0x479   0x9e  Code  Gb  uart.o [1]
+UART_sendString             0x6d1   0x26  Code  Gb  uart.o [1]
+UsageFault_Handler          0x6f7         Code  Wk  vectortrap_M.o [4]
+__cmain                     0xcc5         Code  Gb  cmain.o [4]
+__exit                      0xcf9   0x14  Code  Gb  exit.o [5]
+__iar_init_vfp              0xca1         Code  Gb  fpinit_M.o [3]
+__iar_program_start         0xd0d         Code  Gb  cstartup_M.o [4]
+__low_level_init            0xce3    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                0x0         Data  Gb  vector_table_M.o [4]
+_call_main                  0xcd1         Code  Gb  cmain.o [4]
+_delay_ms                   0x6f9   0x18  Code  Gb  delay.o [1]
+_exit                       0xced         Code  Gb  cexit.o [4]
+exit                        0xce7    0x4  Code  Gb  exit.o [2]
+main                        0xbe5   0xbc  Code  Gb  main.o [1]
+
+
+[1] = D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\Obj
+[2] = dl7M_tln.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  3'368 bytes of readonly  code memory
+    132 bytes of readonly  data memory
+  4'096 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

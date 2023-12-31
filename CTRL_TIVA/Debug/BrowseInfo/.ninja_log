@@ -1,0 +1,68 @@
+# ninja log v5
+1	79	7224811750000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/keypad.xcl	f77b68e5f68800b1
+27	193	7224808380000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/main.xcl	d608163db8e68192
+308	913	7257182261744469	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbw	2c36ab2f0abb309c
+2	211	7257182254982894	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/uart.pbi	f6430d2bf0c64383
+255	1745	7233439033403509	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/Lab4.pbw	ed17b4ee930a8203
+720	778	7244608184742556	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/led.pbi	3500b7c18b7c8475
+7	170	7224808380000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/DIO.xcl	61feef0bfff3a784
+89	121	7224812048871442	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/led.pbi	7973da6862a75b3c
+5	46	7257178858979725	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/main.pbi	f7cbd7221750e986
+177	241	7233439018683361	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/Lab4.pbd	7e1fc371a694e55f
+747	845	7250256530910320	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/keypad.pbi	e6d66cee08999f11
+3	458	7226080559467070	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/DIO.pbi	3f4cc96ac6afbee2
+5	143	7233439017558184	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/main.pbi	43a1055eb9a94de0
+5	89	7224811750000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/delay.xcl	e1e1d9df495df9ae
+2	78	7233419537516808	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/keypad.pbi	1d7e21adf375fd9a
+1	39	7226124570228665	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/delay.pbi	f3605c82d578b2bc
+158	169	7233439017960562	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/Lab4_part2.pbi	8fdc80acb94de1e0
+2	85	7244612357428091	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/main.pbi	f8d9b7f81854aaf7
+202	657	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/keypad.xcl	b74cb5bb975d10f9
+44	79	7226124570647538	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/Lab4_part0.pbi	656a00dadc60a62c
+18	161	7244612412164595	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/Lab4_part0.pbi	67e111b8005c0241
+0	84	7224812040000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/led.xcl	39dcb75812af46d9
+102	126	7233419537911491	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/Lab4_part1.pbi	f6a7c98a21c31059
+4	295	7226089230000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/lcd.xcl	bb6496047435b891
+1011	1175	7250256534127549	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part0.pbi	3878d16e114abe30
+631	808	7250256530502572	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/lcd.pbi	32c7e5f657b7f5eb
+5	94	7233419537671029	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/BrowseInfo/lcd.pbi	ce77b14f17aa5a95
+221	604	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/main.xcl	57c0e4842599c10b
+81	671	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/DIO.xcl	2581917ce94155b2
+163	685	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/delay.xcl	16b6618c483f2f1b
+217	248	7257182255361868	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part2.pbi	22dc590b953f9f3f
+186	698	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/lcd.xcl	f9afcd6d1e17d777
+175	711	7244608180000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/led.xcl	920172a9b9dfda46
+667	742	7244608184370240	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/keypad.pbi	c7134df93dd95063
+694	755	7244608184494792	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/delay.pbi	289a080002a33d4d
+51	754	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/DIO.xcl	e34bbd6946582b8e
+680	874	7244608185446972	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/DIO.pbi	cd0f3275028a685a
+28	78	7244612411307901	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/Lab4_part1.pbi	abf46a2a9b7858be
+707	885	7244608185721437	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/lcd.pbi	adbaa2c34e546543
+405	751	7244612418047913	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/Lab4_part2.pbi	8b25a6a80ec24477
+777	935	7244612419914835	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/Lab4.pbd	54be67098d6cdf64
+215	396	7244612414507241	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/uart.pbi	2410dcb69f4ce02
+951	2033	7244612430434528	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/Lab4.pbw	cfb539f396abe6b
+5	202	7244612410000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/BrowseInfo/uart.xcl	de3c727b847d41b2
+253	302	7257182255900075	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbd	7c0dedd75af1c7e8
+143	611	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/lcd.xcl	650cade65c7a98a4
+135	687	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/main.xcl	5120458aae8de40b
+120	711	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/delay.xcl	d281dd1919534d0e
+151	730	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/keypad.xcl	81d5faf99af8ead5
+127	778	7250256520000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/uart.xcl	e9442988ee0ce959
+725	917	7250256531613478	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/delay.pbi	eb1b8c72a34798a5
+705	942	7250256530000000	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/led.xcl	b23380549c274a63
+774	998	7250256532429348	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/DIO.pbi	19753923a40d154d
+955	1087	7250256532722386	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/led.pbi	fb15c4c253bd2d83
+50	64	7257178859159242	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part1.pbi	f413dfda7fab47f0
+1	34	7257183021221793	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/main.pbi	f7cbd7221750e986
+39	50	7257183021390262	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part1.pbi	f413dfda7fab47f0
+57	104	7257183021925374	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbd	7c0dedd75af1c7e8
+110	845	7257183029049690	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbw	2c36ab2f0abb309c
+1	48	7257184393004872	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/main.pbi	f7cbd7221750e986
+50	72	7257184393264177	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part1.pbi	f413dfda7fab47f0
+78	133	7257184393872559	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbd	7c0dedd75af1c7e8
+139	770	7257184399950363	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbw	2c36ab2f0abb309c
+2	43	7257185864481026	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/main.pbi	f7cbd7221750e986
+47	61	7257185864681051	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4_part1.pbi	f413dfda7fab47f0
+68	126	7257185865333171	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbd	7c0dedd75af1c7e8
+2	608	7257185924955589	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/BrowseInfo/Lab4.pbw	2c36ab2f0abb309c

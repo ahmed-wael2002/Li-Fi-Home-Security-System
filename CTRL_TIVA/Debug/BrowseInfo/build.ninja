@@ -1,0 +1,110 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\XclFileGenerator.exe" $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\XclFileGenerator.exe" $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\SourceIndexer.exe" $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\SourceIndexer.exe" $flags
+
+rule MAKEBROWSE
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\makeBrowseData.exe" $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\makeBrowseData.exe" $flags
+
+rule PDBLINK
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\PbdLink.exe" $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\common\bin\PbdLink.exe" $flags
+
+
+
+#Build steps
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\delay.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\delay.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\DIO.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\DIO.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\keypad.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\keypad.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\lcd.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\lcd.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\led.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\led.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\main.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\main.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\uart.c" -xcl_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.xcl" -macro_file "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\uart.c" -o "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.tmp"
+  rspfile_name = D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.xcl.rsp
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\delay.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\DIO.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\keypad.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\lcd.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\led.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\main.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.pbi : INDEXER D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.xcl |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\uart.c
+  flags = "-out=D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.pbi" -f "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.xcl"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbw : MAKEBROWSE D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbd
+  flags = "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbd" -output "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbw"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part0.pbi : PDBLINK D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.pbi |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.pbi $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.pbi
+  flags = -M "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part0.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\delay.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\DIO.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\keypad.pbi"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part1.pbi : PDBLINK D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.pbi |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.pbi $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.pbi
+  flags = -M "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part1.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\lcd.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\led.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\main.pbi"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part2.pbi : PDBLINK D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.pbi
+  flags = -M "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part2.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\uart.pbi"
+
+build D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbd : PDBLINK D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part0.pbi |  $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part1.pbi $
+D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part2.pbi
+  flags = -M "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4.pbd" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part0.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part1.pbi" "D$:\College\Semester$ 7\3$ Intro$ to$ Embedded$ Systems\1$ Labs\UART0\Debug\BrowseInfo\Lab4_part2.pbi"
+
