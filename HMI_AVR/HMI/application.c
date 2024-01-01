@@ -25,8 +25,8 @@ typedef enum{
 	ON
 }State;
 
-State mute_flag = ON;
-State system = ON;
+volatile State mute_flag = ON;
+volatile State system = OFF;
 
 /*******************************************************************************
  *                      Function Prototypes                                   *
@@ -57,55 +57,58 @@ int main(void){
 
 	/* ****** System Variables ****** */
 	uint8 cmd;
+	uint8 before;
 
 	/* ****** Application ****** */
 	while(1){
-		if (system == OFF){
-			/* Do Nothing */
-		}
-		else{
-			cmd = UART_recieveByte();
-			switch(cmd){
+		while(system == OFF);	// Sleep mode
 
-			/**********************************************/
-			/*                 Fire Command               */
-			/**********************************************/
-			case FIRE_REPORTED:
-				LCD_displayString("Fire is reported!");
-				notifyUser();
-				break;
+		cmd = UART_recieveByte();
+		if(cmd == before)
+			continue;
 
-			/**********************************************/
-			/*             Door Opened Command            */
-			/**********************************************/
-			case DOOR_OPENED:
-				LCD_displayString("Door is Opened!");
-				notifyUser();
-				break;
+		switch(cmd){
 
-			/**********************************************/
-			/*             Door Closed Command            */
-			/**********************************************/
-			case DOOR_CLOSED:
-				LCD_displayString("Door is Closed!");
-				for(uint8 i=0; i<3; i++){
-					Buzzer_on();
-					_delay_ms(100);
-					Buzzer_off();
-					_delay_ms(100);
-				}
-				LCD_clearScreen();
-				break;
+		/**********************************************/
+		/*                 Fire Command               */
+		/**********************************************/
+		case FIRE_ALERT:
+			LCD_displayString("Fire is reported!");
+			notifyUser();
+			break;
 
-			/**********************************************/
-			/*         Dangerous Distance Command         */
-			/**********************************************/
-			case DANGER_DISTANCE:
-				LCD_displayString("Keep away from sensor!");
-				notifyUser();
-				break;
+		/**********************************************/
+		/*             Door Opened Command            */
+		/**********************************************/
+		case DOOR_OPENED_ALERT:
+			LCD_displayString("Door is Opened!");
+			notifyUser();
+			break;
+
+		/**********************************************/
+		/*             Door Closed Command            */
+		/**********************************************/
+		case DOOR_CLOSED_ALERT:
+			LCD_displayString("Door is Closed!");
+			for(uint8 i=0; i<3; i++){
+				Buzzer_on();
+				_delay_ms(100);
+				Buzzer_off();
+				_delay_ms(100);
 			}
+			LCD_clearScreen();
+			break;
+
+		/**********************************************/
+		/*         Dangerous Distance Command         */
+		/**********************************************/
+		case DISTANCE_ALERT:
+			LCD_displayString("Intruder Alert!");
+			notifyUser();
+			break;
 		}
+		before = cmd;
+		_delay_ms(150);
 	}
 	return 0;
 }
@@ -130,5 +133,18 @@ void Mute_Button_Fn(void){
 }
 
 void Toggle_System_Fn(void){
-	system = (system==OFF) ? ON : OFF;
+	if(system == ON){
+		LCD_clearScreen();
+		LCD_displayString("Turning Off");
+		_delay_ms(2000);
+		LCD_clearScreen();
+		system = OFF;
+	}
+	else{
+		LCD_clearScreen();
+		LCD_displayString("Turning On");
+		_delay_ms(2000);
+		LCD_clearScreen();
+		system = ON;
+	}
 }

@@ -1,4 +1,5 @@
 # ninja log v5
+25	132	7257313363380875	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/led.o	439e736d944101f7
 4	286	7233419681183018	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Obj/keypad.o	59fdc08c871c318d
 12	421	7250257088062190	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/delay.o	a824ad4e90ef088
 1	79	7224812037974133	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Obj/led.o	aba772557da5d26d
@@ -7,27 +8,44 @@
 2	62	7234785727766994	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Obj/main.o	1796f9ff1358a80a
 2	74	7226125324536557	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Obj/delay.o	582da3f0491f9340
 36	1289	7226089213016765	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Obj/DIO.o	f8897f41c5494159
+152	212	7258399447467963	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+2	65	7257320104082070	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/bluetooth.o	d326a58a6a19735d
+2	170	7257500990631662	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/ultrasonic.o	d555b681d39996c5
 69	249	7234785729641982	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/Lab (5)/Debug/Exe/Lab4.out	19ae073d167e39e3
+20	293	7257313365066703	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/DIO.o	7f9678c9dc2369ff
 26	624	7244612365313629	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/keypad.o	fa659800ab7d3d3c
 42	705	7244612366322050	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/main.o	120971546b042202
 17	846	7244612367694017	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/DIO.o	95ba8b40e251aee5
 58	766	7244612366967257	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/led.o	76523508bf51fe4a
 619	786	7244612366987204	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/lcd.o	fd75d976030ec398
+3	271	7257458601380743	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/mq2.o	cf3bf24f24f3eafa
 50	815	7244612367151817	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Obj/uart.o	48f4f687772a2f58
 858	1172	7244612370997571	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/HC05/Debug/Exe/Lab4.out	5a01294f4b8fa8d7
-222	264	7257174273691851	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
+71	113	7257185852129702	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
 19	439	7250257088062190	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/keypad.o	9ce4df5392031ecf
-2	216	7257174273187880	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
+2	65	7257185851609557	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
 41	515	7250257089159975	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/led.o	893809d43f777561
-7	179	7257172110857634	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/uart.o	9b2148801ae13279
+7	245	7257183012610849	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/uart.o	9b2148801ae13279
 434	543	7250257089316263	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/lcd.o	3312bbb3544501ec
 24	557	7250257089316263	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/DIO.o	553fab7cf7e59628
-2	68	7257177219613711	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
-74	114	7257177220102405	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
-2	170	7257183011872488	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
-7	245	7257183012610849	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/uart.o	9b2148801ae13279
-253	292	7257183013139183	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
-3	63	7257184387462216	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
-69	109	7257184387950895	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
-2	65	7257185851609557	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Obj/main.o	c2bd81fee13fbe2f
-71	113	7257185852129702	D:/College/Semester 7/3 Intro to Embedded Systems/1 Labs/UART0/Debug/Exe/Lab4.out	b35aca709c62a95
+16	225	7257313364423241	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/adc.o	3466baaed0253d1b
+1	146	7258399446760246	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+7	154	7257313363620233	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/delay.o	e7096bcda6d72bb1
+3	265	7257473627668076	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/magnet.o	3321739ae03f0bed
+2	271	7257474806671177	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/int.o	de86d6ddc0d9d760
+291	403	7257207601520604	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/startup_ewarm.o	dc26a223d148c7e3
+210	991	7257567191485029	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/uart.o	d35e8b26fa4c8479
+185	336	7257313365495559	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/timer.o	ccaf05d4171308a3
+5	154	7258110465385859	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/laser.o	6b2c6f2b2d7e6697
+2	141	7258404105584986	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+147	202	7258404106219149	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+2	76	7258405631190476	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+83	147	7258405631943548	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+2	167	7258443121010784	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+173	230	7258443121665160	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+2	82	7258443672127548	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+88	144	7258443672766172	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+3	78	7258444279340988	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+84	137	7258444279944462	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd
+3	89	7258445228351887	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Obj/main.o	a7210d016fbe147d
+95	149	7258445228997300	D:/College/Semester 7/3 Intro to Embedded Systems/0 Final Project/CTRL_TIVA/Debug/Exe/Lab4.out	7953a868c24813dd

@@ -1,5 +1,19 @@
-D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\1\ Labs\UART0\Debug\BrowseInfo\main.pbi: \
-  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\1\ Labs\UART0\main.c \
-  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\1\ Labs\UART0\types.h \
-  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\1\ Labs\UART0\uart.h \
-  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\1\ Labs\UART0\led.h
+D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\Debug\BrowseInfo\main.pbi: \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\main.c \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdio.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ysizet.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\protocol.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\DIO.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\types.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\delay.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\magnet.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\mq2.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\bluetooth.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\ultrasonic.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\led.h \
+  D:\College\Semester\ 7\3\ Intro\ to\ Embedded\ Systems\0\ Final\ Project\CTRL_TIVA\laser.h

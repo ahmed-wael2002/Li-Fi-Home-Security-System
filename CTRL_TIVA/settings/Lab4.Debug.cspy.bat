@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\settings\Lab4.Debug.general.xcl" --backend -f "D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\settings\Lab4.Debug.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\settings\Lab4.Debug.general.xcl" --backend -f "D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\settings\Lab4.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\settings\Lab4.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\settings\Lab4.Debug.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\settings\Lab4.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\settings\Lab4.Debug.driver.xcl" 
 
 @echo off 
 :end

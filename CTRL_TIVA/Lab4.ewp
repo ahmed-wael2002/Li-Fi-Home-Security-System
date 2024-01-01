@@ -2142,7 +2142,19 @@
         </settings>
     </configuration>
     <file>
+        <name>$PROJ_DIR$\adc.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\adc.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\bitwise_operation.h</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\bluetooth.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\bluetooth.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\delay.c</name>
@@ -2157,16 +2169,16 @@
         <name>$PROJ_DIR$\DIO.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\keypad.c</name>
+        <name>$PROJ_DIR$\int.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\keypad.h</name>
+        <name>$PROJ_DIR$\int.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\lcd.c</name>
+        <name>$PROJ_DIR$\laser.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\lcd.h</name>
+        <name>$PROJ_DIR$\laser.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\led.c</name>
@@ -2175,7 +2187,31 @@
         <name>$PROJ_DIR$\led.h</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\magnet.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\magnet.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\main.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\mq2.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\mq2.h</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\protocol.h</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\startup_ewarm.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\timer.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\timer.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\tm4c123gh6pm.h</name>
@@ -2188,5 +2224,11 @@
     </file>
     <file>
         <name>$PROJ_DIR$\uart.h</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\ultrasonic.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\ultrasonic.h</name>
     </file>
 </project>

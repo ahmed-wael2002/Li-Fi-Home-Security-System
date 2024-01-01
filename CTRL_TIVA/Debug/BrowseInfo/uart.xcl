@@ -1,15 +1,15 @@
-"D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\uart.c"
+"D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\uart.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\BrowseInfo\uart.pbi.dep
+D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\Debug\BrowseInfo\uart.pbi.dep
 -o
-D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0\Debug\BrowseInfo\uart.pbi
+D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA\Debug\BrowseInfo\uart.pbi
 -I
-D:\College\Semester 7\3 Intro to Embedded Systems\1 Labs\UART0
+D:\College\Semester 7\3 Intro to Embedded Systems\0 Final Project\CTRL_TIVA
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I

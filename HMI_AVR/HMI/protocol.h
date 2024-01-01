@@ -20,10 +20,10 @@
 /* ============================================== */
 
 /* Smoke Sensor Commands */
-#define FIRE_REPORTED		 		'A'
-#define DOOR_OPENED					'B'
-#define DOOR_CLOSED					'C'
-#define DANGER_DISTANCE				'D'
+#define FIRE_ALERT		 		'A'
+#define DOOR_OPENED_ALERT		'B'
+#define DOOR_CLOSED_ALERT		'C'
+#define DISTANCE_ALERT			'D'
 
 
 #endif /* PROTOCOL_H_ */
