@@ -1,15 +1,3 @@
- /******************************************************************************
- *
- * Module: LCD
- *
- * File Name: lcd.c
- *
- * Description: Source file for the LCD driver
- *
- * Author: Mohamed Tarek
- *
- *******************************************************************************/
-
 #include <util/delay.h> /* For the delay functions */
 #include "common_macros.h" /* For GET_BIT Macro */
 #include "lcd.h"

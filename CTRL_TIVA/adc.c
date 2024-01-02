@@ -1,3 +1,10 @@
+/*
+    Author: Ahmed Wael Ibrahim 
+    Type: Driver definitions
+    Date: 24/12/2023
+    Description: Configurable ADC driver that enables developer to initialize and define 
+                all modules and channels and sample sequencers of the tm4c123 microcontroller
+*/
 #include "adc.h"
 #include "tm4c123gh6pm.h"
 #include "bitwise_operation.h"

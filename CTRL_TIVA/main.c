@@ -67,7 +67,7 @@ int main()
       sprintf(str, "S %d;", smoke_reading);
       BLUETOOTH_sendString(str);
       // Sending alerts to HMI
-      if(smoke_reading>1100){
+      if(smoke_reading>700){
         LASER_send(FIRE_ALERT);
       }
       _delay_ms(150);

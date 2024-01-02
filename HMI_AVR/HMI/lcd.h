@@ -1,15 +1,3 @@
- /******************************************************************************
- *
- * Module: LCD
- *
- * File Name: lcd.h
- *
- * Description: Header file for the LCD driver
- *
- * Author: Mohamed Tarek
- *
- *******************************************************************************/
-
 #ifndef LCD_H_
 #define LCD_H_
 

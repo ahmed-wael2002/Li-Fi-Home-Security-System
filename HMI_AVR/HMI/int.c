@@ -8,6 +8,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "common_macros.h"
 
 /* Global variables to hold the address of the call back function in the application */
 static volatile void (*int0_callBackPtr)(void) = NULL_PTR;
@@ -60,8 +61,10 @@ ISR(INT1_vect)
 {
 	if(int1_callBackPtr != NULL_PTR)
 	{
+		CLEAR_BIT(SREG, 7);
 		/* Call the Call Back function in the application after the edge is detected */
 		(*int1_callBackPtr)(); /* another method to call the function using pointer to function g_callBackPtr(); */
+		SET_BIT(SREG, 7);
 	}
 }
 
