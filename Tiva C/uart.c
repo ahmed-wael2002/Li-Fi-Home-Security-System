@@ -29,6 +29,11 @@ void UART_init(const UART_ConfigType *config)
 {
     // Mapping of RX Pins
     int pinNumber, portNumber, pctl_val;
+    // Calculating Baud Rate Values
+    float fbrd = CLK_FREQUENCY / (16.0 * (float)config->s_baud_rate);
+    int ibrd = (int)fbrd;
+    fbrd -= ibrd;
+    fbrd = (int)(fbrd * 64 + 0.5);
     switch(config->s_module){
         case UART_0:
             portNumber = PORTA_ID;
@@ -146,8 +151,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_0:  
             /* UART0 initialization */
             UART0_CTL_R = 0;         /* UART5 module disbable */
-            UART0_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART0_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART0_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART0_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART0_CC_R = 0;          /*select system clock*/
             //UA0T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART0_LCRH_R =    ((config->s_mode)<<5)
@@ -161,8 +166,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_1:  
             /* UART0 initialization */
             UART1_CTL_R = 0;         /* UART5 module disbable */
-            UART1_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART1_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART1_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART1_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART1_CC_R = 0;          /*select system clock*/
             //UA0T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART1_LCRH_R =    ((config->s_mode)<<5)
@@ -176,8 +181,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_2:  
             /* UART0 initialization */
             UART2_CTL_R = 0;         /* UART5 module disbable */
-            UART2_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART2_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART2_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART2_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART2_CC_R = 0;          /*select system clock*/
             //UA2T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART2_LCRH_R =    ((config->s_mode)<<5)
@@ -191,8 +196,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_3:  
             /* UART0 initialization */
             UART3_CTL_R = 0;         /* UART5 module disbable */
-            UART3_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART3_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART3_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART3_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART3_CC_R = 0;          /*select system clock*/
             //UA3T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART3_LCRH_R =    ((config->s_mode)<<5)
@@ -206,8 +211,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_4:  
             /* UART0 initialization */
             UART4_CTL_R = 0;         /* UART5 module disbable */
-            UART4_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART4_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART4_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART4_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART4_CC_R = 0;          /*select system clock*/
             //UA4T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART4_LCRH_R =    ((config->s_mode)<<5)
@@ -221,8 +226,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_5:  
             /* UART0 initialization */
             UART5_CTL_R = 0;         /* UART5 module disbable */
-            UART5_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART5_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART5_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART5_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART5_CC_R = 0;          /*select system clock*/
             //UA5T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART5_LCRH_R =    ((config->s_mode)<<5)
@@ -236,8 +241,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_6:  
             /* UART0 initialization */
             UART6_CTL_R = 0;         /* UART5 module disbable */
-            UART6_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART6_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART6_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART6_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART6_CC_R = 0;          /*select system clock*/
             //UA6T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART6_LCRH_R =    ((config->s_mode)<<5)
@@ -251,8 +256,8 @@ void UART_init(const UART_ConfigType *config)
         case UART_7:  
             /* UART0 initialization */
             UART7_CTL_R = 0;         /* UART5 module disbable */
-            UART7_IBRD_R = 104;      /* for 9600 baud rate, integer = 104 */
-            UART7_FBRD_R = 11;       /* for 9600 baud rate, fractional = 11*/
+            UART7_IBRD_R = ibrd;      /* for 9600 baud rate, integer = 104 */
+            UART7_FBRD_R = fbrd;       /* for 9600 baud rate, fractional = 11*/
             UART7_CC_R = 0;          /*select system clock*/
             //UA7T5_LCRH_R = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
             UART7_LCRH_R =    ((config->s_mode)<<5)
@@ -393,16 +398,32 @@ void UART_receiveString(UART_ModuleNumber module, uint8 *Str)
 	Str[i] = '\0';
 }
 
+/*
+ * Description :
+ * Send the required integer through UART to the other UART device.
+ */
 void UART_sendInteger(UART_ModuleNumber module, uint32 value){
-    uint8 temp;
-    if(value==0){
-        UART_sendByte(module, '0');
+    uint8 uDigits[20];
+    signed char uCounter = 0;
+
+    /* Send the negative sign in case of negative numbers */
+    if (value < 0)
+    {
+        UART_sendByte(module, '-');
+        value *= -1;
     }
-    else{
-        while(value!=0){
-            temp=value%10;
-            UART_sendByte(module,temp+'0');
-            value/=10;
-        }
+
+    /* Convert the number to an array of characters */
+    do
+    {
+        uDigits[uCounter++] = value % 10 + '0'; /* Convert each digit to its corresponding ASCI character */
+        value /= 10; /* Remove the already converted digit */
     }
+    while (value != 0);
+
+    /* Send the array of characters in a reverse order as the digits were converted from right to left */
+    for( uCounter--; uCounter>= 0; uCounter--)
+    {
+        UART_sendByte(module, uDigits[uCounter]);
+    } 
 }

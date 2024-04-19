@@ -15,6 +15,8 @@
 
 #include "types.h"
 
+#define CLK_FREQUENCY       16000000
+
 #define UART_MODULE_EN      0
 #define UART_TRANSMIT_EN    8
 #define UART_RECEIVE_EN     9
