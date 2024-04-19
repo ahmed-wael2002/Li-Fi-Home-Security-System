@@ -120,4 +120,7 @@ void UART_sendString(UART_ModuleNumber module, const uint8 *Str);
  */
 void UART_receiveString(UART_ModuleNumber module, uint8 *Str);
 
+
+void UART_sendInteger(UART_ModuleNumber module, uint32 value);
+
 #endif /* UART_H_ */

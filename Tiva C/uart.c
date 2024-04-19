@@ -392,3 +392,17 @@ void UART_receiveString(UART_ModuleNumber module, uint8 *Str)
 	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
 	Str[i] = '\0';
 }
+
+void UART_sendInteger(UART_ModuleNumber module, uint32 value){
+    uint8 temp;
+    if(value==0){
+        UART_sendByte(module, '0');
+    }
+    else{
+        while(value!=0){
+            temp=value%10;
+            UART_sendByte(module,temp+'0');
+            value/=10;
+        }
+    }
+}
